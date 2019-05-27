@@ -18,7 +18,6 @@ routes.post('/users', (req, res) => {
   console.log(req.body)
   // // below code works - just need to make it dynamic
   // const newUser = new User({name: {first: 'john',last:'braam'}, email: 'test@test.com'})
-
   // newUser.save((err, user) => {
   //   if(err) return console.log(err)
   //   console.log(user.name.first+' was added');
@@ -28,10 +27,5 @@ routes.post('/users', (req, res) => {
 db.once('open', function() {
   console.log("MongoDB database connection established successfully");
 })
-
-
-
-
-
 
 module.exports = routes;

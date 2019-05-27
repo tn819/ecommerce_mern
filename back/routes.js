@@ -16,23 +16,14 @@ routes.get('/users', (req, res) => {
 routes.post('/users', (req, res) => {
   console.log(req.body)
   // const newUser = new User({name: {first: 'john',last:'braam'}, email: 'test@test.com'})
-
   // newUser.save((err, user) => {
   //   if(err) return console.log(err)
   //   console.log(user.name.first+' was added');
-    
   // })
 });
-
-
 
 db.once('open', function() {
   console.log("MongoDB database connection established successfully");
 })
-
-
-
-
-
 
 module.exports = routes;

@@ -1,14 +1,25 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+
+import { createStore, applyMiddleware } from "redux";
+import reduxPromise from "redux-promise";
+import reducer from "./reducer";
+import { Provider } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+//import "./css/App.css";
+
+import Auth from "./components/auth";
+
+const store = createStore(
+    reducer,
+    composeWithDevTools(applyMiddleware(reduxPromise))
+);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        Header
-      </header>
-    </div>
-  );
+    return (
+        <Provider store={store}>
+            <Auth />
+        </Provider>
+    );
 }
 
 export default App;

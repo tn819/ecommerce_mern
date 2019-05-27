@@ -4,10 +4,10 @@ export default (
     },
     action
 ) => {
-    if (action.type == "LOG_IN") {
+    if (action.type === "LOG_IN") {
         state = { ...state, isAuthenticated: false };
     }
-    if (action.type == "LOG_OUT") {
+    if (action.type === "LOG_OUT") {
         state = { ...state, isAuthenticated: true };
     }
     return state;

@@ -1,17 +1,34 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import "../css/Login.css";
-
+import { authenticate } from "../action";
 
 export default class Login extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    
-
+    state = {
+        redirectToReferrer: false,
+    };
+    login = () => {
+        authenticate(() => {
+            this.setState(() => ({
+                redirectToReferrer: true,
+            }));
+        });
+    };
     render() {
-        <div>
+        const { from } = this.props.location.state || {
+            from: { pathname: "/" },
+        };
+        const { redirectToReferrer } = this.state;
 
-        </div>
+        if (redirectToReferrer === true) {
+            return <Redirect to={from} />;
+        }
+
+        return (
+            <div>
+                <p>You must log in to view the page</p>
+                <button onClick={this.login}>Log in</button>
+            </div>
+        );
     }
 }

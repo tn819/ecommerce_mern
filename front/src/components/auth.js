@@ -17,7 +17,7 @@ class AuthExample extends React.Component {
         return (
             <Router>
                 <div>
-                    <AuthButton isAuthenticated={this.props.isAuthenticated} />
+                    <AuthButton />
                     <ul>
                         <li>
                             <Link to="/public">Public Page</Link>

@@ -7,6 +7,19 @@ routes.get('/', (req, res) => {
   res.status(200).json({ message: 'Connected!' });
 });
 
+routes.post('/register', (req, res)=> {
+  res.json({"register": true});
+});
+
+routes.get('/login', (req, res) => {
+  res.json({"success": true})
+});
+
+routes.get('/logout', (req, res) => {
+  req.session = null;
+  res.redirect("/");
+})
+
 routes.get('/users', (req, res) => {
   User.find({'name.first': 'john'}, (err, users) => {
     if(err) return console.log(err)

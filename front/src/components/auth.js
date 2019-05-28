@@ -26,8 +26,16 @@ class AuthExample extends React.Component {
                             <Link to="/protected">Protected Page</Link>
                         </li>
                     </ul>
+                    {/*
+                        Public route will feature public-facing page, blank for now
+                     */}
                     <Route path="/public" component={Public} />
                     <Route path="/login" component={Login} />
+                    {/*
+                        see protected component, it uses redux to get authentication status
+                        redirects if there's an issue
+                        
+                     */}
                     <PrivateRoute path="/protected" component={Protected} />
                 </div>
             </Router>

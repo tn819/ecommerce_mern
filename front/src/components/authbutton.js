@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 
 import React from "react";
 
-export const AuthButton = withRouter(props =>
+const AuthButton = withRouter(props =>
     props.isAuthenticated ? (
         <p>
             Welcome!{" "}
@@ -18,3 +18,5 @@ export const AuthButton = withRouter(props =>
         <p>You are not logged in.</p>
     )
 );
+
+export default AuthButton;

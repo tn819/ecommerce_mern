@@ -1,11 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import "./css/App.css";
 
-import AuthButton from "./components/authbutton";
-import Login from "./components/login";
-import PrivateRoute from "./components/privateroute";
+import AuthButton from "./authbutton";
+import Login from "./login";
+import PrivateRoute from "./privateroute";
 
 //client-side protected routes:
 //https://tylermcginnis.com/react-router-protected-routes-authentication/

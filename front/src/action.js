@@ -1,4 +1,4 @@
-import axios from "../utils/axios";
+import axios from "./utils/axios";
 
 export async function authenticate(form) {
     return await axios

@@ -12,7 +12,7 @@ const AuthButton = withRouter(props => {
         props.history.push("/")
     }
 
-    return props.userid ? (
+    return props.username ? (
         <p>
             Welcome!{" "}
             <button
@@ -27,7 +27,7 @@ const AuthButton = withRouter(props => {
 
 function mapStateToProps(state) {
     return {
-      userid: state.userid,
+      username: state.username,
     };
   };
 

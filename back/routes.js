@@ -26,14 +26,14 @@ routes.post('/register', (req, res)=> {
     if(err){return console.log(err)};
     console.log("user registered");
     passport.authenticate('local')(req, res, function () {
-      console.log(req.session);
-      res.redirect('/');
+      console.log('req.session ',req.session);
+      res.json(req.session.passport);
     });
   }) 
 });
 
 routes.post('/login', passport.authenticate('local'), (req, res) => {
-  res.json({"success": true})
+  res.json(req.session.passport)
 });
 
 routes.get('/logout', (req, res) => {

@@ -1,19 +1,33 @@
-// import axios from "./utils/axios";
+import axios from "./utils/axios";
 
-export function login(form = {}) {
-    // return await axios
-    //     .post(`/login`, { form })
-    //     .then(({ data }) => {
-    //         //wrap in test for valid mongo id
-    //         return {
-    //             type: "LOG_IN",
-    //         };
-    //     })
-    //     .catch(err => console.log(err));
-    return {
-        type: "LOG_IN",
-        userid: 66,
-    }
+export async function login({username, password}) {
+    return axios
+        .post(`/login`, { username, password })
+        .then(({ data }) => {
+            console.log(data);
+            
+            return {
+                type: "LOG_IN",
+                username: data.user
+            };
+        })
+        .catch(err => console.log(err));
+
+}
+
+export async function register({email, firstname, lastname, username, password}) {
+    return axios
+        .post(`/register`, {email, firstname, lastname, username, password})
+        .then(({ data }) => {
+            console.log(data);
+            
+            //wrap in test for valid mongo id
+            return {
+                type: "REGISTER",
+                username: data.user
+            };
+        })
+        .catch(err => console.log(err));
 
 }
 
@@ -24,7 +38,7 @@ export async function signout() {
     //     .then(({ data }) => {
             return {
                 type: "LOG_OUT",
-                userid: null,
+                username: null,
             };
         // })
         // .catch(err => console.log(err));

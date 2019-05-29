@@ -1,14 +1,12 @@
 export default (
     state = {
-        isAuthenticated: false,
+        userid: null,
     },
     action
 ) => {
-    if (action.type === "LOG_IN") {
-        state = { ...state, isAuthenticated: false };
+    if (action.type === "LOG_IN" || action.type === "LOG_OUT") {
+        state = { ...state, userid: action.userid };
     }
-    if (action.type === "LOG_OUT") {
-        state = { ...state, isAuthenticated: true };
-    }
+
     return state;
 };

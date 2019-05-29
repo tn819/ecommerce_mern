@@ -5,7 +5,7 @@ import reduxPromise from "redux-promise";
 import reducer from "./reducer";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-//import "./css/App.css";
+import "./css/App.css";
 
 import Auth from "./components/auth";
 

@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import "./css/App.css";
 
-import Auth from "./components/auth";
+import Main from "./components/main";
 
 const store = createStore(
     reducer,
@@ -17,7 +17,7 @@ const store = createStore(
 function App() {
     return (
         <Provider store={store}>
-            <Auth />
+            <Main />
         </Provider>
     );
 }

@@ -12,7 +12,7 @@ import PrivateRoute from "./privateroute";
 const Public = () => <h3>Public</h3>;
 const Protected = () => <h3>Protected</h3>;
 
-class AuthExample extends React.Component {
+class Main extends React.Component {
     render() {
         return (
             <Router>
@@ -49,4 +49,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(AuthExample);
+export default connect(mapStateToProps)(Main);

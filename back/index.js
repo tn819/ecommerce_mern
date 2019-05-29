@@ -5,9 +5,13 @@ const PORT = 3002;
 
 app.use(require('cors')());
 app.use(require('body-parser').json());
-app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('body-parser').urlencoded({ extended: false }));
 
-app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(require('express-session')({ 
+    secret: 'keyboard cat', 
+    resave: true, 
+    saveUninitialized: true 
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 

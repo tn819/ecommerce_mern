@@ -1,6 +1,7 @@
 // You must pass {mergeParams: true} to the child router if you want to access the params from the parent router. 
 const routes = require('express').Router({mergeParams: true});
 const User = require('./mongoDB/user.model');
+const Item = require('./mongoDB/item.model');
 const db = require('./mongoDB/mongoose');
 const passport = require('passport');
 
@@ -25,6 +26,29 @@ routes.post('/register', (req, res)=> {
   User.register(newUser, req.body.password, function(err, user) { 
     if(err){return console.log(err)};
     console.log("user registered");
+    passport.authenticate('local')(req, res, function () {
+      console.log('req.session ',req.session);
+      res.json(req.session.passport);
+    });
+  }) 
+});
+
+routes.post('/add', (req, res)=> {
+  console.log("adding item", req.body);
+  const {title, description, keywords, location, type, price, about, wanted} = req.body
+  let newItem = new Item({
+    title,
+    description,
+    keywords,
+    location,
+    type,
+    price,
+    about,
+    wanted,
+  });
+  newItem.save((err, user) => { 
+    if(err){return console.log(err)};
+    console.log("item added");
     passport.authenticate('local')(req, res, function () {
       console.log('req.session ',req.session);
       res.json(req.session.passport);

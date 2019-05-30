@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import AuthButton from "./authbutton";
 import Login from "./login";
 import PrivateRoute from "./privateroute";
+import Header from './header'
+import Search from './search'
 
 //client-side protected routes:
 //https://tylermcginnis.com/react-router-protected-routes-authentication/
@@ -16,11 +18,15 @@ class Main extends React.Component {
     render() {
         return (
             <Router>
+                <Header />
                 <div>
                     <AuthButton />
                     <ul>
                         <li>
                             <Link to="/public">Public Page</Link>
+                        </li>
+                        <li>
+                            <Link to="/search">Search Page</Link>
                         </li>
                         <li>
                             <Link to="/protected">Protected Page</Link>
@@ -31,6 +37,7 @@ class Main extends React.Component {
                      */}
                     <Route path="/public" component={Public} />
                     <Route path="/login" component={Login} />
+                    <Route path="/search" component={Search} />
                     {/*
                         see protected component, it uses redux to get authentication status
                         redirects if there's an issue
@@ -45,7 +52,7 @@ class Main extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.isAuthenticated,
+        username: state.username,
     };
 };
 

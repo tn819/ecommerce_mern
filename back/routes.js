@@ -36,6 +36,14 @@ routes.post('/login', passport.authenticate('local'), (req, res) => {
   res.json(req.session.passport)
 });
 
+routes.get('/isloggedin', (req,res) => {
+  if(req.session.passport){
+    res.json({...req.session.passport, success: true});
+  };
+  res.json({success: false});
+
+})
+
 routes.get('/logout', (req, res) => {
   req.logout();
   res.redirect("/");

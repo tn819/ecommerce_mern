@@ -1,8 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { connect } from 'react-redux';
 import '../css/searchItem.css'
+import { getListing } from "../action";
+
 
 function SearchItem(props) {
+
+  useEffect(() => {
+    props.dispatch(getListing())
+  },[])
+ 
   return (
     <div class='searchItem'>
       <img src={props.img} />

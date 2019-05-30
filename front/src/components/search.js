@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import SearchItem from './searchItem';
+import { getListing } from "../action";
+
 
 const testItems = [{
   id: 654,
@@ -13,6 +15,12 @@ const testItems = [{
 }]
 
 function Search(props) {
+
+  useEffect(() => {
+    props.dispatch(getListing())
+  },[])
+
+  
   return (
     <div>
       {props.items.map(el => <SearchItem img={el.image}/>)}

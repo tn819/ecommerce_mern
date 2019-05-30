@@ -30,6 +30,21 @@ export async function login({username, password}) {
 
 }
 
+export async function getListings() {
+    return axios
+        .post(`/items`, { })
+        .then(({ data }) => {
+            console.log(data);
+            
+            return {
+                type: "GET_LISTINGS",
+                // listings: data.user
+            };
+        })
+        .catch(err => console.log(err));
+
+}
+
 export async function register({email, firstname, lastname, username, password}) {
     return axios
         .post(`/register`, {email, firstname, lastname, username, password})
@@ -52,11 +67,8 @@ export async function addListing({price, title, description, keywords, location,
         .post(`/add`, {price, title, description, keywords, location, type, about, wanted: {ageFrom, ageTo, sex, lifestage, description: wantedDescription}})
         .then(({ data }) => {
             console.log(data);
-            
-            //wrap in test for valid mongo id
             return {
-                type: "REGISTER",
-                username: data.user
+                type: "ADD",
             };
         })
         .catch(err => console.log(err));

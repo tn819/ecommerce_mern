@@ -46,13 +46,10 @@ routes.post('/add', (req, res)=> {
     about,
     wanted,
   });
-  newItem.save((err, user) => { 
+  newItem.save((err, item) => { 
     if(err){return console.log(err)};
     console.log("item added");
-    passport.authenticate('local')(req, res, function () {
-      console.log('req.session ',req.session);
-      res.json(req.session.passport);
-    });
+    res.json(item)
   }) 
 });
 
@@ -76,10 +73,9 @@ routes.get('/logout', (req, res) => {
   res.redirect("/");
 });
 
-routes.get('/users', (req, res) => {
-  User.find({'name.first': 'john'}, (err, users) => {
-    if(err) return console.log(err)
-    res.status(200).json({ users });
+routes.post('/items', (req, res) => {
+  Items.find({}, (err, items) => {
+    res.json(items)
   })  
 });
 

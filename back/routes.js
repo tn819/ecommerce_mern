@@ -37,10 +37,13 @@ routes.post('/login', passport.authenticate('local'), (req, res) => {
 });
 
 routes.get('/isloggedin', (req,res) => {
+  console.log("in is logged in", req.session);
   if(req.session.passport){
     res.json({...req.session.passport, success: true});
-  };
-  res.json({success: false});
+  }
+  else {
+    res.json({success: false});
+  }
 
 })
 

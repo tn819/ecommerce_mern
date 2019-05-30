@@ -1,0 +1,12 @@
+header {
+  height: 5rem;
+  background: #008000;
+  display: flex;
+  align-items: center
+}
+
+header > * {
+  margin: 1rem;
+  background: red;
+  padding: 1rem;
+}

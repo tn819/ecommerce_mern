@@ -15,6 +15,7 @@ function Header(props) {
       <Link to="/search">Search Page</Link>
       <Link to="/protected">Protected Page</Link>
       <Link to="/login">Login or Register</Link>
+      <Link to="/addnew">Add New Item</Link>
       <AuthButton/>
     </header>
   )

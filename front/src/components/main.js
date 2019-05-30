@@ -6,14 +6,14 @@ import { isLoggedIn } from '../action';
 import AuthButton from "./authbutton";
 import Login from "./login";
 import PrivateRoute from "./privateroute";
-import Header from './header'
-import Search from './search'
+import Header from './header';
+import Search from './search';
+import Profile from './profile';
 
 //client-side protected routes:
 //https://tylermcginnis.com/react-router-protected-routes-authentication/
 
 const Public = () => <h3>Public Facing Page</h3>;
-const Protected = () => <h3>Protected</h3>;
 
 class Main extends React.Component {
 
@@ -26,18 +26,7 @@ class Main extends React.Component {
             <Router>
                 <Header />
                 <div>
-                    <AuthButton />
-                    <ul>
-                        <li>
-                            <Link to="/public">Public Page</Link>
-                        </li>
-                        <li>
-                            <Link to="/search">Search Page</Link>
-                        </li>
-                        <li>
-                            <Link to="/protected">Protected Page</Link>
-                        </li>
-                    </ul>
+
                     {/*
                         Public route will feature public-facing page, blank for now
                      */}
@@ -49,7 +38,7 @@ class Main extends React.Component {
                         redirects if there's an issue
                         
                      */}
-                    <PrivateRoute path="/protected" component={Protected} />
+                    <PrivateRoute path="/profile" component={Profile} />
                 </div>
             </Router>
         );

@@ -49,17 +49,17 @@ function Login (props) {
                 <label htmlFor='lastname'>Last Name</label>
                 <input type='text' name='lastname' id='lastname' value={registerForm.lastname} onChange={handleChange}/>
                 <label htmlFor='username'>Username</label>
-                <input type='text' name='username' id='username' value={registerForm.username} onChange={handleChange}/>
+                <input type='text' name='username' id='register_username' value={registerForm.username} onChange={handleChange}/>
                 <label htmlFor='password'>Password</label>
-                <input type='password' name='password' id='password' value={registerForm.password} onChange={handleChange}/>
+                <input type='password' name='password' id='register_password' value={registerForm.password} onChange={handleChange}/>
                 <button type='submit' onClick={handleClick}>Register</button>
             </form>
 
             <form id='login'>        
                 <label htmlFor='username'>Username</label>
-                <input type='text' name='username' id='username' value={loginForm.username} onChange={handleChange}/>
+                <input type='text' name='username' id='login_username' value={loginForm.username} onChange={handleChange}/>
                 <label htmlFor='password'>Password</label>
-                <input type='password' name='password' id='password' value={loginForm.password} onChange={handleChange}/>
+                <input type='password' name='password' id='login_password' value={loginForm.password} onChange={handleChange}/>
                 <button type='submit' onClick={handleClick}>Login</button>
             </form>
             

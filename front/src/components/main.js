@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { isLoggedIn } from '../action';
 
 import AuthButton from "./authbutton";
 import Login from "./login";
@@ -11,10 +12,15 @@ import Search from './search'
 //client-side protected routes:
 //https://tylermcginnis.com/react-router-protected-routes-authentication/
 
-const Public = () => <h3>Public</h3>;
+const Public = () => <h3>Public Facing Page</h3>;
 const Protected = () => <h3>Protected</h3>;
 
 class Main extends React.Component {
+
+    componentDidMount(){
+        this.props.dispatch(isLoggedIn());
+    }
+
     render() {
         return (
             <Router>
@@ -52,7 +58,8 @@ class Main extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        username: state.username,
+        isLoggedIn: state.isLoggedIn,
+        username: state.username
     };
 };
 

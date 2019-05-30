@@ -1,5 +1,20 @@
 import axios from "./utils/axios";
 
+export async function isLoggedIn() {
+    return axios
+        .get(`/isloggedin`)
+        .then(({ data }) => {
+            console.log(data);
+            return {
+                type: "LOGGED_IN",
+                isLoggedIn: data.success,
+                username: data.user
+            };
+        })
+        .catch(err => console.log(err));
+
+}
+
 export async function login({username, password}) {
     return axios
         .post(`/login`, { username, password })

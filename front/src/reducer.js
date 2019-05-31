@@ -17,5 +17,9 @@ export default (
         state = { ...state, isLoggedIn: action.isLoggedIn, username: action.username };
     }
 
+    if (action.type === "GET_LISTINGS") {
+        state = { ...state, items: action.listings };
+    }
+
     return state;
 };

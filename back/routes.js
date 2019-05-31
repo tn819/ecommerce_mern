@@ -1,6 +1,7 @@
 // You must pass {mergeParams: true} to the child router if you want to access the params from the parent router. 
 const routes = require('express').Router({mergeParams: true});
 const User = require('./mongoDB/user.model');
+const Item = require('./mongoDB/item.model');
 const db = require('./mongoDB/mongoose');
 const passport = require('passport');
 
@@ -32,6 +33,27 @@ routes.post('/register', (req, res)=> {
   }) 
 });
 
+routes.post('/add', (req, res)=> {
+  console.log("adding item", req.body);
+  const {title, description, keywords, location, type, price, about, image, wanted} = req.body
+  let newItem = new Item({
+    title,
+    description,
+    keywords,
+    location,
+    type,
+    price,
+    about,
+    image,
+    wanted,
+  });
+  newItem.save((err, item) => { 
+    if(err){return console.log(err)};
+    console.log("item added");
+    res.json(item)
+  }) 
+});
+
 routes.post('/login', passport.authenticate('local'), (req, res) => {
   res.json(req.session.passport)
 });
@@ -44,7 +66,6 @@ routes.get('/isloggedin', (req,res) => {
   else {
     res.json({success: false});
   }
-
 })
 
 routes.get('/logout', (req, res) => {
@@ -52,21 +73,8 @@ routes.get('/logout', (req, res) => {
   res.redirect("/");
 });
 
-routes.get('/users', (req, res) => {
-  User.find({'name.first': 'john'}, (err, users) => {
-    if(err) return console.log(err)
-    res.status(200).json({ users });
-  })  
-});
-
-routes.post('/users', (req, res) => {
-  console.log(req.body)
-  // // below code works - just need to make it dynamic
-  // const newUser = new User({name: {first: 'john',last:'braam'}, email: 'test@test.com'})
-  // newUser.save((err, user) => {
-  //   if(err) return console.log(err)
-  //   console.log(user.name.first+' was added');
-  // })
+routes.post('/items', (req, res) => {
+  Item.find({}, (err, items) => res.json(items))
 });
 
 db.once('open', function() {

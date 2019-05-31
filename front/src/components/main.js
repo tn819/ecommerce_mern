@@ -14,6 +14,7 @@ import AddItem from "./addItem";
 
 const Content = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: center;
     font-size: 1em;
     text-align: center;

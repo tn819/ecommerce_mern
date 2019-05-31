@@ -1,97 +1,118 @@
 import React from "react";
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import Places from "./places";
+import styled from 'styled-components';
+
+const FormHolder = styled.div`
+ margin-top: 3px;
+ display:flex;
+ flex-direction:column;
+ align-items: center;
+ width: 100%;
+`;
+
+const FormField = styled.div`
+ margin-top: 3px;
+ display:flex;
+ flex-direction:column;
+ align-items: center;
+ width: 100%;
+`;
+const FormFieldLabel = styled.label`
+    :focus {
+    color:gray
+    }
+`;
+const ErrorFormField = styled.div`
+    color: red;
+`;
 
 export default () => {
     return (
-        <div>
+        <FormHolder>
             <p>Find a new pad, tell us your preferences</p>
             <Formik
                 initialValues={{ price: '', title: '', description: '', keywords: '', location: '', type: '', about: '', image: '', ageFrom: '', ageTo: '', sex: '', lifestage: '', wantedDescription: '' }}
                 validate={values => {
                     let errors = {};
-                    if (!values.email) {
-                    errors.email = 'Required';
-                    } else if (
-                    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                    ) {
-                    errors.email = 'Invalid email address';
+                    if (values.age > 125 || values.age < 15) {
+                    errors.age = 'Enter a valid age';
                     }
                     return errors;
                 }}
-                onSubmit={(values, { setSubmitting }) => {
-                    console.log("submitting", JSON.stringify(values));
-
-                    setTimeout(() => {
-                        setSubmitting(false);
-                    }, 400);
-                }}
+            onSubmit={values => console.log("values getting submitted:", values)}
             >
-            {({values, handleChange, handleSubmit, isSubmitting, setFieldValue}) => {
-                return (
-                    <Form>
-                        <div><label htmlFor="price">
-                            Price
-                            <Field type="number" name="price" />
-                            <ErrorMessage name="price" component="div" />
-                        </label></div>
-                        {/* search in descriptions */}
-                        <div><label htmlFor="description">
-                            Search Description
-                            <Field type="text" name="description" />
-                            <ErrorMessage name="description" component="div" />
-                        </label></div>
-                        {/* search preset keywords */}
-                        <div><label htmlFor="keywords">
-                            Keywords
-                            <Field type="text" name="keywords" />
-                            <ErrorMessage name="keywords" component="div" />
-                        </label></div>
-                        {/* pull algolia keywords */}
-                        <div><label htmlFor="location">
-                            Where?
-                            <Field type="text" name="location" render={() => (
-                                <Places setFieldValue={setFieldValue}/>
-                            )}/>
-                            <ErrorMessage name="location" component="div"/>
-                        </label></div>
-                        {/* search type options */}
-                        <div><label htmlFor="type">
-                            Type
-                            <Field type="text" name="type" />
-                            <ErrorMessage name="type" component="div" />
-                        </label></div>
-                        {/* constrain age dropdown options */}
-                        <div><label htmlFor="age">
-                            Age
-                            <Field type="number" name="age" />
-                            <ErrorMessage name="age" component="div" />
-                        </label></div>
-                        {/* male, female, prefer not to answer */}
-                        <div><label htmlFor="sex">
-                            Sex
-                            <Field component="select" name="sex">
-                                <option name="male"> Male </option>
-                                <option name="female"> Female </option>
-                                <option name="other"> Other/Prefer Not To Say </option>
-                            </Field>
-                            <ErrorMessage name="sex" component="div" />
-                        </label></div>
-                        {/* study, work, party, couple, quiet */}
-                        <div><label>
-                            Lifestage
-                            <Field type="text" name="lifestage" />
-                            <ErrorMessage name="lifestage" component="div" />
-                        </label></div>
-                        <button type="submit" disabled={isSubmitting}>
-                            Submit
-                        </button>
-                    </Form>
-                )
-            }}
+            {({values, handleChange, handleSubmit, isSubmitting, setFieldValue}) => (
+                <Form>
+                    <FormField>
+                        <FormFieldLabel htmlFor="price">Price</FormFieldLabel>
+                        <Field type="number" name="price" />
+                        <ErrorMessage name="price" component={ErrorFormField} />
+                    </FormField>
+                    {/* search in descriptions */}
+                    <FormField>
+                        <FormFieldLabel htmlFor="description">Search Description</FormFieldLabel>
+                        <Field type="text" name="description" />
+                        <ErrorMessage name="description" component={ErrorFormField} />
+                    </FormField>
+                    {/* search preset keywords */}
+                    <FormField>
+                        <FormFieldLabel htmlFor="keywords">Keywords</FormFieldLabel>
+                        <Field type="text" name="keywords" />
+                        <ErrorMessage name="keywords" component={ErrorFormField} />
+                    </FormField>
+                    {/* pull algolia keywords */}
+                    <FormField>
+                        <FormFieldLabel htmlFor="location">Where?</FormFieldLabel>
+                        <Field type="text" name="location" render={() => (
+                            <Places setFieldValue={setFieldValue}/>
+                        )}/>
+                        <ErrorMessage name="location" component={ErrorFormField}/>
+                    </FormField>
+                    {/* search type options */}
+                    <FormField>
+                        <FormFieldLabel htmlFor="type">Type</FormFieldLabel>
+                        <Field type="text" name="type" />
+                        <ErrorMessage name="type" component={ErrorFormField} />
+                    </FormField>
+                    {/* constrain age dropdown options */}
+                    <FormField>
+                        <FormFieldLabel htmlFor="age">Age</FormFieldLabel>
+                        <Field type="number" name="age" />
+                        <ErrorMessage name="age" component={ErrorFormField} />
+                    </FormField>
+                    {/* male, female, prefer not to answer */}
+                    <FormField>
+                        <FormFieldLabel htmlFor="sex">Sex</FormFieldLabel>
+                        <Field component="select" name="sex">
+                            <option name="male"> Male </option>
+                            <option name="female"> Female </option>
+                            <option name="other"> Other/Prefer Not To Say </option>
+                        </Field>
+                        <ErrorMessage name="sex" component={ErrorFormField} />
+                    </FormField>
+                    {/* study, work, party, couple, quiet */}
+                    <FormField>
+                        <FormFieldLabel htmlFor="lifestage">Lifestage</FormFieldLabel>
+                        <Field component="select" name="lifestage">
+                            <option name="study"> Study </option>
+                            <option name="work"> Work </option>
+                            <option name="party"> Party </option>
+                            <option name="family"> Family </option>
+                            <option name="couple"> Couple </option>
+                            <option name="quiet"> Quiet </option>
+                            <option name="other"> Non Traditional/Other </option>
+                        </Field>
+                        <ErrorMessage name="lifestage" component={ErrorFormField} />
+                    </FormField>
+                    <button type="submit" disabled={isSubmitting}>
+                        Submit
+                    </button>
+                </Form>
+            )}
             </Formik>
             
-        </div>
+        </FormHolder>
     );
     
 }

@@ -1,9 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { isLoggedIn } from '../action';
 
-import AuthButton from "./authbutton";
 import Login from "./login";
 import PrivateRoute from "./privateroute";
 import Header from './header';
@@ -20,6 +19,7 @@ class Main extends React.Component {
     componentDidMount(){
         this.props.dispatch(isLoggedIn());
     }
+
 
     render() {
         return (

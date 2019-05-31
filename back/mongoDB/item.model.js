@@ -15,7 +15,7 @@ let itemSchema = new Schema({
       ageTo: Number,
       sex: String,
       lifestage: String,
-      description: String,
+      description: String
 
     },
     //not sure if I need to import user schema if its referenced

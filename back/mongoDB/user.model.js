@@ -26,6 +26,19 @@ let User = new Schema({
         type: String,
         required: true
       },
+    },
+    wanted: {
+      location: String,
+      type: String,
+      price: Number,
+      about: String,
+      wanted: {
+        ageFrom: Number,
+        ageTo: Number,
+        sex: String,
+        lifestage: String,
+        description: String
+      }
     }
 });
 

@@ -35,7 +35,7 @@ routes.post('/register', (req, res)=> {
 
 routes.post('/add', (req, res)=> {
   console.log("adding item", req.body);
-  const {title, description, keywords, location, type, price, about, wanted} = req.body
+  const {title, description, keywords, location, type, price, about, image, wanted} = req.body
   let newItem = new Item({
     title,
     description,
@@ -44,6 +44,7 @@ routes.post('/add', (req, res)=> {
     type,
     price,
     about,
+    image,
     wanted,
   });
   newItem.save((err, item) => { 
@@ -65,7 +66,6 @@ routes.get('/isloggedin', (req,res) => {
   else {
     res.json({success: false});
   }
-
 })
 
 routes.get('/logout', (req, res) => {
@@ -74,19 +74,7 @@ routes.get('/logout', (req, res) => {
 });
 
 routes.post('/items', (req, res) => {
-  Items.find({}, (err, items) => {
-    res.json(items)
-  })  
-});
-
-routes.post('/users', (req, res) => {
-  console.log(req.body)
-  // // below code works - just need to make it dynamic
-  // const newUser = new User({name: {first: 'john',last:'braam'}, email: 'test@test.com'})
-  // newUser.save((err, user) => {
-  //   if(err) return console.log(err)
-  //   console.log(user.name.first+' was added');
-  // })
+  Item.find({}, (err, items) => res.json(items))
 });
 
 db.once('open', function() {

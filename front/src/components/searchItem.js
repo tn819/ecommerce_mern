@@ -1,37 +1,33 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import '../css/searchItem.css'
-import { getListing } from "../action";
 
 
-function SearchItem(props) {
+function SearchItem({data}) {
 
-  useEffect(() => {
-    props.dispatch(getListing())
-  },[])
  
   return (
     <div class='searchItem'>
-      <img src={props.img} />
+      <img src={data.img} />
       <div class='offer'>
         
-        <p class='type'>Room with private bathroom</p>
-        <p class='title'>Stylish, modern studio close 2 city centre</p>
-        <p class='keywords'>2 Housemates . Great Kitchen . Removated 2011</p>
-        <p class='location'>Berlin</p>
-        <p class='price'>500 euro</p>
+        <p class='type'>{data.type}</p>
+        <p class='title'>{data.title}</p>
+        <p class='keywords'>{data.keywords}</p>
+        <p class='location'>{data.location}</p>
+        <p class='price'>{data.price}</p>
         
       </div>
       <div class='aboutus'>
         <strong>About us</strong>
-        <p>We are a great bunch of people looking for a new housemate. We are honestly the best so are looking for something good as well. Are you this person then leave us a message.</p>
+        <p>{data.about}</p>
       </div>
       <div class='wanted'>
         <strong>Wanted</strong>
-        <p class='age'>30-35 years</p>
-        <p class='sex'>Yes please</p>
-        <p class='lifestage'>Student</p>
-        <p>Are you that special clean person who also kinda likes to hang out and party but not too much because we are kinda old?</p>
+        {/* <p class='age'>{data.wanted.ageFrom} to {data.wanted.ageTo} years</p> */}
+        <p class='sex'>{data.wanted.sex}</p>
+        <p class='lifestage'>{data.wanted.lifestage}</p>
+        <p>{data.wanted.description}</p>
       </div>
     </div>
   )

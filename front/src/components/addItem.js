@@ -4,7 +4,7 @@ import { addListing } from "../action";
 
 
 function AddItem(props) {
-  const [addForm, setAddForm] = useState({price:'', title:'', description:'', keywords:'', location:'', type:'', about:'', ageFrom:'',ageTo:'',sex:'',lifestage:'',wantedDescription:''})
+  const [addForm, setAddForm] = useState({price:'', title:'', description:'', keywords:'', location:'', type:'', about:'', image:'', ageFrom:'',ageTo:'',sex:'',lifestage:'',wantedDescription:''})
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -35,6 +35,8 @@ function AddItem(props) {
         <input id='type' name='type' value={addForm.type} onChange={handleChange}></input>
         <label htmlFor='about'>About</label>
         <input id='about' name='about' value={addForm.about} onChange={handleChange}></input>
+        <label htmlFor='image'>Image url</label>
+        <input id='image' name='image' value={addForm.image} onChange={handleChange}></input>
         Wanted
         <label htmlFor='ageFrom'>Age from</label>
         <input id='ageFrom' name='ageFrom' value={addForm.ageFrom} onChange={handleChange}></input>

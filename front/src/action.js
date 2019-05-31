@@ -4,7 +4,6 @@ export async function isLoggedIn() {
     return axios
         .get(`/isloggedin`)
         .then(({ data }) => {
-            console.log(data);
             return {
                 type: "LOGGED_IN",
                 isLoggedIn: data.success,
@@ -19,8 +18,6 @@ export async function login({username, password}) {
     return axios
         .post(`/login`, { username, password })
         .then(({ data }) => {
-            console.log(data);
-            
             return {
                 type: "LOG_IN",
                 username: data.user
@@ -33,15 +30,13 @@ export async function login({username, password}) {
 export async function getListings() {
     return axios
         .post(`/items`, { })
-        .then(({ data }) => {
-            console.log(data);
-            
-            return {
+        .then(({ data }) => (
+            {
                 type: "GET_LISTINGS",
-                // listings: data.user
-            };
-        })
-        .catch(err => console.log(err));
+                listings: data
+            }
+        ))
+        .catch(err => console.log(err))
 
 }
 
@@ -49,9 +44,6 @@ export async function register({email, firstname, lastname, username, password})
     return axios
         .post(`/register`, {email, firstname, lastname, username, password})
         .then(({ data }) => {
-            console.log(data);
-            
-            //wrap in test for valid mongo id
             return {
                 type: "REGISTER",
                 username: data.user
@@ -62,11 +54,10 @@ export async function register({email, firstname, lastname, username, password})
 }
 
 
-export async function addListing({price, title, description, keywords, location, type, about, ageFrom, ageTo, sex, lifestage, wantedDescription}) {
+export async function addListing({price, title, description, keywords, location, type, about, image, ageFrom, ageTo, sex, lifestage, wantedDescription}) {
     return axios
-        .post(`/add`, {price, title, description, keywords, location, type, about, wanted: {ageFrom, ageTo, sex, lifestage, description: wantedDescription}})
+        .post(`/add`, {price, title, description, keywords, location, type, about, image, wanted: {ageFrom, ageTo, sex, lifestage, description: wantedDescription}})
         .then(({ data }) => {
-            console.log(data);
             return {
                 type: "ADD",
             };

@@ -11,7 +11,7 @@ function Header(props) {
     <header>
     {/* let's use NavLink here eventually, not urgent */}
       <div>nothing to see here</div>
-      <div>{props.username}</div>
+      <Link to="/profile">{props.username}</Link>
       <Link to="/search">Search Page</Link>
       <Link to="/protected">Protected Page</Link>
       <Link to="/login">Login or Register</Link>

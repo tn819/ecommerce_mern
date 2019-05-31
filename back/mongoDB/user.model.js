@@ -32,13 +32,11 @@ let User = new Schema({
       type: String,
       price: Number,
       about: String,
-      wanted: {
-        ageFrom: Number,
-        ageTo: Number,
-        sex: String,
-        lifestage: String,
-        description: String
-      }
+      ageFrom: Number,
+      ageTo: Number,
+      sex: String,
+      lifestage: String,
+      description: String
     }
 });
 

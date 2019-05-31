@@ -20,13 +20,14 @@ export default () => {
                     return errors;
                 }}
                 onSubmit={(values, { setSubmitting }) => {
+                    console.log("submitting", JSON.stringify(values));
+
                     setTimeout(() => {
-                        console.log(JSON.stringify(values, null, 2));
                         setSubmitting(false);
                     }, 400);
                 }}
             >
-            {({values, handleChange, handleSubmit, isSubmitting}) => {
+            {({values, handleChange, handleSubmit, isSubmitting, setFieldValue}) => {
                 return (
                     <Form>
                         <div><label htmlFor="price">
@@ -49,8 +50,8 @@ export default () => {
                         {/* pull algolia keywords */}
                         <div><label htmlFor="location">
                             Where?
-                            <Field type="text" name="location" render={({field}) => (
-                                <Places onChange={handleChange}/>
+                            <Field type="text" name="location" render={() => (
+                                <Places setFieldValue={setFieldValue}/>
                             )}/>
                             <ErrorMessage name="location" component="div"/>
                         </label></div>

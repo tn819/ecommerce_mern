@@ -1,7 +1,7 @@
 import React from 'react';
 import AlgoliaPlaces from 'algolia-places-react';
  
-export default () => {
+export default (props) => {
   return (
     <AlgoliaPlaces
       placeholder='Write an address here'
@@ -12,6 +12,9 @@ export default () => {
         language: 'en',
         countries: 'de',
         type: 'address'
+      }}
+      onChange={({suggestion}) => {
+        props.setFieldValue('location', suggestion);
       }}
     />
   );  

@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3002",
   "dependencies": {
+    "algolia-places-react": "^1.4.1",
     "axios": "^0.18.0",
     "formik": "^1.5.7",
     "react": "^16.8.6",

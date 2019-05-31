@@ -23,7 +23,7 @@ function Search({dispatch, items}) {
   
   return (
     <div>
-      {items.map(el => <SearchItem data={el}/>)}
+      {items.map(el => <SearchItem key={el._id} data={el}/>)}
     </div>
   )
 }

@@ -7,26 +7,26 @@ function SearchItem({data}) {
 
  
   return (
-    <div class='searchItem'>
-      <img src={data.img} />
-      <div class='offer'>
+    <div className='searchItem'>
+      <img alt='item picture' src={data.img} />
+      <div className='offer'>
         
-        <p class='type'>{data.type}</p>
-        <p class='title'>{data.title}</p>
-        <p class='keywords'>{data.keywords}</p>
-        <p class='location'>{data.location}</p>
-        <p class='price'>{data.price}</p>
+        <p className='type'>{data.type}</p>
+        <p className='title'>{data.title}</p>
+        <p className='keywords'>{data.keywords}</p>
+        <p className='location'>{data.location}</p>
+        <p className='price'>{data.price}</p>
         
       </div>
-      <div class='aboutus'>
+      <div className='aboutus'>
         <strong>About us</strong>
         <p>{data.about}</p>
       </div>
-      <div class='wanted'>
+      <div className='wanted'>
         <strong>Wanted</strong>
-        {/* <p class='age'>{data.wanted.ageFrom} to {data.wanted.ageTo} years</p> */}
-        <p class='sex'>{data.wanted.sex}</p>
-        <p class='lifestage'>{data.wanted.lifestage}</p>
+        {/* <p className='age'>{data.wanted.ageFrom} to {data.wanted.ageTo} years</p> */}
+        <p className='sex'>{data.wanted.sex}</p>
+        <p className='lifestage'>{data.wanted.lifestage}</p>
         <p>{data.wanted.description}</p>
       </div>
     </div>

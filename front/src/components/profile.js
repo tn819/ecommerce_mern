@@ -15,11 +15,19 @@ const FormField = styled.div`
  margin-top: 3px;
  display:flex;
  flex-direction:column;
+ justify-content: space-between;
  align-items: center;
  width: 100%;
+ transition: box-shadow .3s;
+ padding: 5px;
+ border-radius: 15px;
+ :hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    }
 `;
+
 const FormFieldLabel = styled.label`
-    :focus {
+    :hover {
     color:gray
     }
 `;
@@ -46,7 +54,7 @@ export default () => {
                 <Form>
                     <FormField>
                         <FormFieldLabel htmlFor="price">Price</FormFieldLabel>
-                        <Field type="number" name="price" />
+                        <Field type="number" name="price"/>
                         <ErrorMessage name="price" component={ErrorFormField} />
                     </FormField>
                     {/* search in descriptions */}

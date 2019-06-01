@@ -2,7 +2,6 @@ import { signout } from "../action";
 import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 
-
 import React from "react";
 
 const AuthButton = withRouter(props => {
@@ -13,15 +12,15 @@ const AuthButton = withRouter(props => {
     }
 
     return props.username ? (
-        <p>
+        <div>
             Welcome!{" "}
             <button
                 onClick={handleLogout}>
                 Sign out
             </button>
-        </p>
+        </div>
     ) : (
-        <p>You are not logged in.</p>
+        <div>You are not logged in.</div>
     )
 })
 

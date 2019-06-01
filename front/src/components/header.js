@@ -2,22 +2,37 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import AuthButton from './authbutton';
+import styled from 'styled-components';
 
-import '../css/header.css'
+const activeClassName = 'nav-item-active'
+const NavItem = styled(NavLink).attrs({
+    activeClassName
+})`
+  color: #FFF587;
+
+  &.${activeClassName} {
+    color: #FF665A;
+  }
+`;
+const NavHeader = styled.header`
+  height: 5rem;
+  background: #A3A1A8;
+  display: flex;
+  align-items: center;
+`;
 
 
 function Header(props) {
   return (
-    <header>
+    <NavHeader>
     {/* let's use NavLink here eventually, not urgent */}
-      <div>nothing to see here</div>
-      <NavLink to="/profile">{props.username}</NavLink>
-      <NavLink to="/search">Search Page</NavLink>
-      <NavLink to="/protected">Protected Page</NavLink>
-      <NavLink to="/login">Login or Register</NavLink>
-      <NavLink to="/addnew">Add New Item</NavLink>
+      <NavItem to="/profile">{props.username}</NavItem>
+      <NavItem to="/search">Search Page</NavItem>
+      <NavItem to="/protected">Protected Page</NavItem>
+      <NavItem to="/login">Login or Register</NavItem>
+      <NavItem to="/addnew">Add New Item</NavItem>
       <AuthButton/>
-    </header>
+    </NavHeader>
   )
 }
 

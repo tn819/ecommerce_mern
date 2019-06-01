@@ -21,6 +21,7 @@ const Content = styled.div`
     padding: 3px;
     color: palered;
     width: 100vw;
+    height: 100vh;
     background-color: rgba(245,245,245,.4);
 `;
 

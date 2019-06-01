@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import AuthButton from './authbutton';
 
 import '../css/header.css'
@@ -11,11 +11,11 @@ function Header(props) {
     <header>
     {/* let's use NavLink here eventually, not urgent */}
       <div>nothing to see here</div>
-      <div>{props.username}</div>
-      <Link to="/search">Search Page</Link>
-      <Link to="/protected">Protected Page</Link>
-      <Link to="/login">Login or Register</Link>
-      <Link to="/addnew">Add New Item</Link>
+      <NavLink to="/profile">{props.username}</NavLink>
+      <NavLink to="/search">Search Page</NavLink>
+      <NavLink to="/protected">Protected Page</NavLink>
+      <NavLink to="/login">Login or Register</NavLink>
+      <NavLink to="/addnew">Add New Item</NavLink>
       <AuthButton/>
     </header>
   )

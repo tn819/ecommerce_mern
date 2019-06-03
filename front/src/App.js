@@ -14,6 +14,8 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(reduxPromise))
 );
 
+
+
 function App() {
     return (
         <Provider store={store}>

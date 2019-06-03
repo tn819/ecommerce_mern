@@ -36,6 +36,11 @@ const ErrorFormField = styled.div`
 `;
 
 export default () => {
+    const handleSubmit = (values) => {
+        console.log("values getting submitted:", values)
+        //axios.post(`/search`, values).then()
+    }
+
     return (
         <FormHolder>
             <p>Find a new pad, tell us your preferences</p>
@@ -48,7 +53,7 @@ export default () => {
                     }
                     return errors;
                 }}
-            onSubmit={values => console.log("values getting submitted:", values)}
+                onSubmit={values => handleSubmit(values)}
             >
             {({values, handleChange, handleSubmit, isSubmitting, setFieldValue}) => (
                 <Form>

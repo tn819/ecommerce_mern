@@ -15,11 +15,19 @@ const FormField = styled.div`
  margin-top: 3px;
  display:flex;
  flex-direction:column;
+ justify-content: space-between;
  align-items: center;
  width: 100%;
+ transition: box-shadow .3s;
+ padding: 5px;
+ border-radius: 15px;
+ :hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    }
 `;
+
 const FormFieldLabel = styled.label`
-    :focus {
+    :hover {
     color:gray
     }
 `;
@@ -28,6 +36,11 @@ const ErrorFormField = styled.div`
 `;
 
 export default () => {
+    const handleSubmit = (values) => {
+        console.log("values getting submitted:", values)
+        //axios.post(`/search`, values).then()
+    }
+
     return (
         <FormHolder>
             <p>Find a new pad, tell us your preferences</p>
@@ -40,13 +53,13 @@ export default () => {
                     }
                     return errors;
                 }}
-            onSubmit={values => console.log("values getting submitted:", values)}
+                onSubmit={values => handleSubmit(values)}
             >
             {({values, handleChange, handleSubmit, isSubmitting, setFieldValue}) => (
                 <Form>
                     <FormField>
                         <FormFieldLabel htmlFor="price">Price</FormFieldLabel>
-                        <Field type="number" name="price" />
+                        <Field type="number" name="price"/>
                         <ErrorMessage name="price" component={ErrorFormField} />
                     </FormField>
                     {/* search in descriptions */}
